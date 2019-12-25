@@ -59,7 +59,7 @@ Tree_Node* build_parsing_tree(const string& in) {
     list<string> postfix = convert_infix_2_postfix(in);
     stack<Tree_Node*> nodes;
     for(string s: postfix) {
-        if (!is_operator(s[0])) { //if it is not an operator, it has to be a number
+        if (is_digit(s[0])) {
             Tree_Node* t = new Tree_Node(s);
             t->set_value(stoi(s));
             nodes.push(t);
@@ -103,6 +103,8 @@ Tree_Node* build_parsing_tree(const string& in) {
 }
 int calculate_expression(const string& in) {
     Tree_Node* t = build_parsing_tree(in);
-    return t->get_value();
+    int res = t->get_value();
+    delete t;
+    return res;
 }
 

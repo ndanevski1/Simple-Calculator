@@ -22,7 +22,6 @@ int operator_precedence(char c) {
     }
 }
 list<string> convert_infix_2_postfix(const string& in) {
-    string out;
     stack<char> st;
     list<string> postfix;
     string number;
@@ -38,7 +37,7 @@ list<string> convert_infix_2_postfix(const string& in) {
         else if(curr == ')') {
             postfix.push_back(number);
             number = "";
-            while (st.top() != '(') {
+            while (!st.empty() && st.top() != '(') {
                 char add = st.top();    //add every operator that is inside the parenthesis
                 st.pop();
                 postfix.push_back(string(1,add));
@@ -50,7 +49,8 @@ list<string> convert_infix_2_postfix(const string& in) {
         else if (is_operator(curr)) {
 //            if the current precedence is less than or equal to the one on the top of the stack,
 //            then first "calculate" the previous expression and then continue with the current one
-            postfix.push_back(number);
+            if(number != "")
+                postfix.push_back(number);
             number = "";
             while(!st.empty() && operator_precedence(curr) <= operator_precedence(st.top())) {
                 char add = st.top();    //add every operator that is inside the parenthesis
