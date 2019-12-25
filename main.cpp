@@ -3,10 +3,14 @@
 //
 
 #include <iostream>
-
+#include "infix-to-postfix.h"
 using namespace std;
 
 int main() {
-    cout << "Hello, World!" << std::endl;
+    cout << "Input an expression\n";
+    string s;
+    cin >> s;
+    cout << "In postfix is \n";
+    cout << convert_infix_2_postfix(s);
     return 0;
 }
