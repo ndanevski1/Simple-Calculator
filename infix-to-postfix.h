@@ -5,10 +5,9 @@
 #ifndef SIMPLE_CALCULATOR_INFIX_TO_POSTFIX_H
 #define SIMPLE_CALCULATOR_INFIX_TO_POSTFIX_H
 
-#include <string>
-
+#include "Helper-methods.h"
 using namespace std;
 
-string convert_infix_2_postfix(string s);
+list<string> convert_infix_2_postfix(const string& s);
 
 #endif //SIMPLE_CALCULATOR_INFIX_TO_POSTFIX_H
